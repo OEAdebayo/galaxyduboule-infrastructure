@@ -1,4 +1,7 @@
 ---
+# defaults for host-specific variables
+duboule_inference_services: null
+
 # Galaxy
 galaxy_create_user: true # False by default, as e.g. you might have a 'galaxy' user provided by LDAP or AD.
 galaxy_separate_privileges: true # Best practices for security, configuration is owned by 'root' (or a different user) than the processes
@@ -227,6 +230,7 @@ galaxy_config:
     ftp_upload_dir: /data/galaxy/uploads
     ftp_upload_site: galaxyduboule
     ftp_upload_purge: false # The ftp is not automatically purged on import.
+    inference_services: "{{ duboule_inference_services }}" # This is a list of inference services that will be used in the galaxy instance
     builds_file_path: "{{ galaxy_config_dir }}/builds.txt" # in order to only use the installed genomes a minimal build file is provided
     sanitize_all_html: false # Allow to see html pages in galaxy
     conda_ensure_channels: conda-forge,bioconda,defaults,pytorch,ilastik-forge

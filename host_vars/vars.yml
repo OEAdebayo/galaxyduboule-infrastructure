@@ -1,0 +1,7 @@
+duboule_inference_services:
+  default:
+    model: "{{ galaxyai.model }}"
+    api_key: "{{ galaxyai.token}}"
+    api_url: "{{ galaxyai.endpoint }}"
+    temperature: 0.7
+    max_tokens: 5000
