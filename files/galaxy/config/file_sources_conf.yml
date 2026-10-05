@@ -1,0 +1,6 @@
+- type: posix
+  id: nas
+  label: My NAS folder
+  doc: Your personal folder on the lab NAS (/data/nas/users/<you>)
+  root: "/data/nas/users/${user.username}"
+  writable: true

@@ -221,7 +221,8 @@ galaxy_config:
     # error_email_to: lucille.delisle@epfl.ch
     # email_from: 'Lucille Delisle (galaxy) <lucille.delisle@epfl.ch>'
     library_import_dir: /data/nas/ #lab.data/archive/ remove the comment to use the nas for the library import. The nas is mounted on /data/nas
-    # user_library_import_dir: /data/mount_s3/perso_storage
+    #user_library_import_dir: /data/nas/
+
     allow_library_path_paste: true
     require_login: true # Only users can use galaxy
     allow_user_creation: false # Only the admins can create users
@@ -243,6 +244,7 @@ galaxy_config:
     # Tool Dependencies
     dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
     container_resolvers_config_file: "{{ galaxy_config_dir }}/container_resolvers_conf.yml"
+    file_sources_config_file: "{{ galaxy_config_dir }}/file_sources_conf.yml" # export output of history to the nas per user
     cleanup_job: onsuccess
     # install conda dependencies just edited remove if there are issues
     conda_auto_install: true
@@ -286,6 +288,8 @@ galaxy_config_files:
     dest: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
   - src: files/galaxy/config/cellranger_transcriptomes.loc
     dest: "{{ galaxy_config.galaxy.tool_data_path }}/cellranger_transcriptomes.loc"
+  - src: files/galaxy/config/file_sources_conf.yml
+    dest: "{{ galaxy_config.galaxy.file_sources_config_file }}"
 
 galaxy_singularity_images_cvmfs_path: /cvmfs/singularity.galaxyproject.org/all/
 
